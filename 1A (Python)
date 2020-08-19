@@ -1,0 +1,47 @@
+ def binaryToDecimal(n):
+    num = n;
+    dec_value = 0;
+    base1 = 1;
+
+    len1 = len(num);
+    for i in range(len1 - 1, -1, -1):
+        if (num[i] == '1'):
+            dec_value += base1;
+        base1 = base1 * 2;
+
+    return dec_value;
+
+
+def DecimalToBinary(num):
+    if num > 1:
+        DecimalToBinary(num // 2)
+    print(num % 2, end='')
+
+def iszero(num):
+    for char in num:
+        if(char != '0'):
+            return 0
+    return 1
+
+def lowerlimit(num):
+    if(num[0]=='1' and iszero(num[1:])==1):
+        return 1
+
+def upperlimit(num):
+    for char in num:
+        if(char != '1'):
+            return 0
+    return 1
+
+n = input("Enter size: ")
+k = int(n)
+string = input("Enter String: ")
+
+if (upperlimit(string)==1):
+    print("-1")
+if (lowerlimit(string)==1):
+    print("-1")
+else:
+    DecimalToBinary(binaryToDecimal(string) - 1)
+    print(" ")
+    DecimalToBinary(binaryToDecimal(string) + 1)
