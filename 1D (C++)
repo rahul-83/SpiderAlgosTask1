@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+void rating(int s[],int c[],int x,int y,int n)
+{
+	int change = 0;
+	for(int i=0;i<n;i++)
+	{
+		if(c[i]==1 && s[i]==1)
+		{
+			change+=x;
+		}
+		if(c[i]==1 && s[i]==0)
+		{
+			change-=y;
+		}
+	}
+	if(change>0)
+	{
+		cout<<"promoted";
+	}
+	if(change<0)
+	{
+		cout<<"demoted";
+	}
+	if(change==0)
+	{
+		cout<<"no change";
+	}
+}
+int main()
+{
+	int n,r,x,y;
+	int c[1000],s[1000];
+	cin>>n>>r>>x>>y;
+	for(int i=0;i<n;i++)
+	{
+		cin>>c[i];
+	}
+	for(int i=0;i<n;i++)
+	{
+		cin>>s[i];
+	}
+	rating(s,c,x,y,n);
+	return 0;	
+}
+
